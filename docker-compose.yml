@@ -1,17 +1,9 @@
 version: '3'
 services:
   api:
-    build:
-      context: .
-      dockerfile: ./apps/api/Dockerfile
-    container_name: '${NAME}'
-    ports:
-      - 3002:3000
-    restart: always
-    volumes:
-      - ./.env:/opt/app/.env
-    networks:
-      - myNetwork
+    extends:
+      file: docker-compose.api.yml
+      service: api
     # profiles:
     # - backend
     depends_on:
